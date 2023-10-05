@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import getUserById from '../../controllers/Users/controllGetUserById';
+import getUserById from '../../controllers/Users/controllGetUserById.js';
 
 const getUser = async (req: Request, res: Response) => {
   const { id } = req.params;

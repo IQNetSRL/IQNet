@@ -1,5 +1,5 @@
-import server from './src/app';
-import { db } from './src/db';
+import server from './src/app.js';
+import { db } from './src/db.js';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

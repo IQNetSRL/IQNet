@@ -1,4 +1,3 @@
-import { Model, Sequelize } from "sequelize";
 import { db } from "../../db.js";
 
 const controllDeleteUser = async (id: string) => {

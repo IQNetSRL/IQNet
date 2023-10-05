@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import controllPostUser from '../../controllers/Users/controllPostUser';
+import controllPostUser from '../../controllers/Users/controllPostUser.js';
 
 const postUser = async (req: Request, res: Response) => {
   try {

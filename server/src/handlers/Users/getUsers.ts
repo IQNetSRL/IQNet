@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import getAllUsers from '../../controllers/Users/controllGetUser';
+import getAllUsers from '../../controllers/Users/controllGetUser.js';
 
 const getUsers = async (req: Request, res: Response) => {
   try {

@@ -3,8 +3,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
-import  router  from "./routes/index";
-import "./db";
+import  router  from "./routes/index.js";
+import "./db.js";
 
 const server = express();
 
@@ -15,6 +15,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
+  req;
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
@@ -32,9 +33,7 @@ server.use("/", router);
 server.use(
   (
     err: any,
-    req: express.Request,
     res: express.Response,
-    next: express.NextFunction
   ) => {
     const status = err.status || 500;
     const message = err.message || err;

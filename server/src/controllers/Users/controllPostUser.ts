@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { db } from "../../db";
+import { db } from "../../db.js";
 
 interface UserAttributes {
   id: string;
@@ -18,7 +18,7 @@ const controllPostUser = async (req: Request): Promise<UserAttributes> => {
   const { name, lastName, phoneNumber, city, emailAddress, consult } = req.body;
   const Users = db.sequelize.models.Users;
 
-  const [newUser, created] = await Users.findOrCreate({
+  const [newUser] = await Users.findOrCreate({
     where: {
       name,
       lastName,

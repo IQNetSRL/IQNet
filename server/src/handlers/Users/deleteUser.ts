@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import controllDeleteUser from '../../controllers/Users/controllDeleteUser';
+import controllDeleteUser from '../../controllers/Users/controllDeleteUser.js';
 
 const deleteUser = async (req: Request, res: Response) => {
   try {

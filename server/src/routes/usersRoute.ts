@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import getUsers from '../handlers/Users/getUsers';
-import getUser from '../handlers/Users/getUserById';
-import deleteUser from '../handlers/Users/deleteUser';
-import postUser from '../handlers/Users/postUser';
+import getUsers from '../handlers/Users/getUsers.js';
+import getUser from '../handlers/Users/getUserById.js';
+import deleteUser from '../handlers/Users/deleteUser.js';
+import postUser from '../handlers/Users/postUser.js';
 
 const usersRouter = Router();
 
