@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import * as thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import rootReducer from "./reducer.js";
 
 const combinedReducers = combineReducers({
