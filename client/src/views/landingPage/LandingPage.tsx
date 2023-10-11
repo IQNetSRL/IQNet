@@ -4,6 +4,13 @@ import Form from "../../components/form/Form";
 import styles from "./LandingPage.module.scss";
 
 function LandingPage() {
+  const scrollToFormSection = () => {
+    const formSection = document.getElementById("sectionForm");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <main className={styles.mainLanding}>
       <section className={styles.sectionLanding}>
@@ -14,8 +21,11 @@ function LandingPage() {
           voluptatum dolorem, ab facere temporibus qui veniam non repellendus
           quae.
         </p>
+        <div className={styles.buttonContainer}>
+          <button onClick={scrollToFormSection}>CONTACTÁNOS</button>
+        </div>
       </section>
-      <section className={styles.sectionForm}>
+      <section className={styles.sectionForm} id="sectionForm">
         <Form />
       </section>
     </main>

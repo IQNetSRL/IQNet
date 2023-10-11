@@ -6,6 +6,7 @@
     @include centerFlex(flex, column, center, flex-start, 0.5rem);
     @include height(75vh, 75vh);
     color: $white;
+    position: relative;
     padding: 1rem;
     cursor: default;
   }
@@ -20,10 +21,34 @@
   p {
     z-index: 1;
   }
+  .buttonContainer {
+    @include centerFlex(flex, row, center, center, 0);
+    @include width(100%, 100%);
+    position: absolute;
+    bottom: -1.2rem;
+    left: 0;
+    z-index: 2;
+    button {
+      background-color: $white;
+      color: $primary-color;
+      border: 2px solid $primary-color;
+      border-radius: 1rem;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        color: $white;
+        background-color: $primary-color;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
   .sectionForm {
     @include height(75vh, 75vh);
     position: relative;
     background-color: $white;
-    z-index: 2;
+    z-index: 1;
   }
 }
