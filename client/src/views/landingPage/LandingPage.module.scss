@@ -5,13 +5,25 @@
   .sectionLanding {
     @include centerFlex(flex, column, center, flex-start, 0.5rem);
     @include height(75vh, 75vh);
-    font-family: $primary-font;
     color: $white;
-    background-color: $secondary-color;
     padding: 1rem;
     cursor: default;
   }
+  .particles {
+    @include height(100%, 100%);
+    overflow: hidden;
+  }
   .title {
     font-size: 5rem;
+    z-index: 1;
+  }
+  p {
+    z-index: 1;
+  }
+  .sectionForm {
+    @include height(75vh, 75vh);
+    position: relative;
+    background-color: $white;
+    z-index: 2;
   }
 }

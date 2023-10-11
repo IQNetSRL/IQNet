@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.mainLanding {
+  .sectionForm {
+    @include height(75vh, 75vh);
+    position: relative;
+    background-color: $white;
+    z-index: 2;
+  }
+}
