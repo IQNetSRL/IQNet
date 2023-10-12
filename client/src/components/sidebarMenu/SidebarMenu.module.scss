@@ -1,0 +1,39 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  z-index: 200;
+  transition: left 0.3s ease-in-out;
+  .menu {
+    list-style: none;
+    padding: 20px;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  .toggleButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    &:hover {
+      background-color: #555;
+    }
+  }
+}
+
+.open {
+  left: 0;
+}
+
+.closed {
+  left: -250px;
+}

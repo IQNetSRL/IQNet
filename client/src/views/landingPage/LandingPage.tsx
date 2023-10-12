@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import Particle from "../../components/particles/Particles";
 import Form from "../../components/form/Form";
+import SidebarMenu from "../../components/sideBarMenu/SideBarMenu";
+import { IoMenu } from "@react-icons/all-files/io5/IoMenu";
 import styles from "./LandingPage.module.scss";
 
 function LandingPage() {
   const [section, setSection] = useState(1);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleChangeSection = (value) => {
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleChangeSection = (value: number) => {
     setSection(value);
   };
 
@@ -20,12 +27,22 @@ function LandingPage() {
   return (
     <main className={styles.mainLanding}>
       <Particle />
+      <SidebarMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       <section
         className={
           section === 1 ? styles.sectionLanding : styles.sectionLandingNo
         }
         onMouseEnter={() => handleChangeSection(1)}
       >
+        <div
+          className={`${styles.toggleButtonContainer} ${
+            section !== 1 && styles.selected
+          }`}
+        >
+          <button onClick={toggleMenu}>
+            <IoMenu />
+          </button>
+        </div>
         <h1 className={styles.title}>IQNet</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed
@@ -43,7 +60,7 @@ function LandingPage() {
       >
         <div>
           <h1 className={styles.titleAbout}>¿Quienes Somos?</h1>
-          <p>
+          <p className={styles.textAbout}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eius
             libero explicabo voluptatem, quasi in? Quis dolore odio ipsa ipsum
             et necessitatibus error dolores qui, cupiditate quae expedita quo
