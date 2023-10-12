@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Particle from "../../components/particles/Particles";
 import Form from "../../components/form/Form";
 import styles from "./LandingPage.module.scss";
 
 function LandingPage() {
+  const [section, setSection] = useState(1);
+
+  const handleChangeSection = (value) => {
+    setSection(value);
+  };
+
   const scrollToFormSection = () => {
     const formSection = document.getElementById("sectionForm");
     if (formSection) {
@@ -13,8 +19,13 @@ function LandingPage() {
 
   return (
     <main className={styles.mainLanding}>
-      <section className={styles.sectionLanding}>
-        <Particle />
+      <Particle />
+      <section
+        className={
+          section === 1 ? styles.sectionLanding : styles.sectionLandingNo
+        }
+        onMouseEnter={() => handleChangeSection(1)}
+      >
         <h1 className={styles.title}>IQNet</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed
@@ -25,7 +36,27 @@ function LandingPage() {
           <button onClick={scrollToFormSection}>CONTACTÁNOS</button>
         </div>
       </section>
-      <section className={styles.sectionForm} id="sectionForm">
+      <section
+        className={section === 2 ? styles.sectionAbout : styles.sectionAboutNo}
+        onMouseEnter={() => handleChangeSection(2)}
+        id="sectionAbout"
+      >
+        <div>
+          <h1 className={styles.titleAbout}>¿Quienes Somos?</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eius
+            libero explicabo voluptatem, quasi in? Quis dolore odio ipsa ipsum
+            et necessitatibus error dolores qui, cupiditate quae expedita quo
+            dolor quasi eveniet veniam, facilis totam itaque architecto
+            explicabo, consequuntur vitae?
+          </p>
+        </div>
+      </section>
+      <section
+        className={section === 3 ? styles.sectionForm : styles.sectionFormNo}
+        onMouseEnter={() => handleChangeSection(3)}
+        id="sectionForm"
+      >
         <Form />
       </section>
     </main>
