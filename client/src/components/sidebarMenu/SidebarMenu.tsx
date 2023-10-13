@@ -12,7 +12,7 @@ const SidebarMenu = ({ isOpen, scrollToFormSection }) => {
         <button className={styles.toggleButton}>IQNet</button>
         <ul className={styles.menu}>
           <li onClick={() => scrollToFormSection("sectionAbout")}><BsExclamationCircle/>Nosotros</li>
-          <li onClick={() => scrollToFormSection("sectionForm")}><RiContactsLine/>Contactános</li>
+          <li onClick={() => scrollToFormSection("sectionForm")}><RiContactsLine/>Contáctanos</li>
         </ul>
       </section>
     </div>

@@ -106,7 +106,7 @@ function LandingPage() {
           </p>
           <div className={styles.buttonContainer}>
             <button onClick={() => scrollToFormSection("sectionForm")}>
-              CONTACTÁNOS
+              CONTÁCTANOS
             </button>
           </div>
         </section>
