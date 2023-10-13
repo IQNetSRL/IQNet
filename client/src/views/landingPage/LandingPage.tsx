@@ -6,10 +6,11 @@ import { IoMenu } from "@react-icons/all-files/io5/IoMenu";
 import styles from "./LandingPage.module.scss";
 
 function LandingPage() {
-  const [section, setSection] = useState(1);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const aboutRef = useRef<HTMLDivElement | null>(null);
   const navbarRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const landingRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -25,13 +26,47 @@ function LandingPage() {
     };
   }, [isMenuOpen]);
 
+  const handleScroll = () => {
+    if (aboutRef.current && formRef.current) {
+      const aboutSectionTop = aboutRef.current.getBoundingClientRect().top;
+      const formSectionTop = formRef.current.getBoundingClientRect().top;
+      if (aboutSectionTop <= 300 && !(formSectionTop <= 300)) {
+        aboutRef.current.classList.add(styles.scrolled);
+      } else {
+        aboutRef.current.classList.remove(styles.scrolled);
+      }
+    }
+
+    if (formRef.current) {
+      const formSectionTop = formRef.current.getBoundingClientRect().top;
+      if (formSectionTop <= 300) {
+        formRef.current.classList.add(styles.scrolled2);
+      } else {
+        formRef.current.classList.remove(styles.scrolled2);
+      }
+    }
+
+    if (landingRef.current && aboutRef.current) {
+      const landingSectionTop = landingRef.current.getBoundingClientRect().top;
+      const aboutSectionTop = aboutRef.current.getBoundingClientRect().top;
+      if (landingSectionTop <= 0 && !(aboutSectionTop <= 300)) {
+        landingRef.current.classList.add(styles.scrolled1);
+      } else {
+        landingRef.current.classList.remove(styles.scrolled1);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
-  };
-
-  const handleChangeSection = (value: number) => {
-    setSection(value);
   };
 
   const scrollToFormSection = (value: string) => {
@@ -48,21 +83,19 @@ function LandingPage() {
         isOpen={isMenuOpen}
         scrollToFormSection={scrollToFormSection}
       />
-      <section
-        className={
-          section === 1 ? styles.sectionLanding : styles.sectionLandingNo
-        }
-        onMouseEnter={() => handleChangeSection(1)}
-        id="sectionLanding"
+      <div
+        className={`${styles.toggleButtonContainer} ${styles.fixed}`}
+        ref={navbarRef}
       >
-        <div
-          className={`${styles.toggleButtonContainer} ${styles.fixed}`}
-          ref={navbarRef}
-        >
-          <button onClick={toggleMenu}>
-            <IoMenu />
-          </button>
-        </div>
+        <button onClick={toggleMenu}>
+          <IoMenu />
+        </button>
+      </div>
+      <section
+        className={`${styles.sectionLandingNo} ${styles.scrolled1}`}
+        id="sectionLanding"
+        ref={landingRef}
+      >
         <h1 className={styles.title}>IQNet</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed
@@ -76,8 +109,7 @@ function LandingPage() {
         </div>
       </section>
       <section
-        className={section === 2 ? styles.sectionAbout : styles.sectionAboutNo}
-        onMouseEnter={() => handleChangeSection(2)}
+        className={styles.sectionAboutNo}
         id="sectionAbout"
         ref={aboutRef}
       >
@@ -92,11 +124,7 @@ function LandingPage() {
           </p>
         </div>
       </section>
-      <section
-        className={section === 3 ? styles.sectionForm : styles.sectionFormNo}
-        onMouseEnter={() => handleChangeSection(3)}
-        id="sectionForm"
-      >
+      <section className={styles.sectionFormNo} id="sectionForm" ref={formRef}>
         <Form />
       </section>
     </main>

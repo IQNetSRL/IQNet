@@ -3,16 +3,6 @@
 
 .mainLanding {
   cursor: default;
-  .sectionLanding {
-    @include centerFlex(flex, column, center, flex-start, 0.5rem);
-    @include height(75vh, 75vh);
-    position: relative;
-    color: $white;
-    padding: 1rem;
-    z-index: 99;
-    transition: 0.2s ease;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  }
   .sectionLandingNo {
     @include centerFlex(flex, column, center, flex-start, 0.5rem);
     @include height(75vh, 75vh);
@@ -20,9 +10,18 @@
     color: $primary-color;
     background-color: $white;
     padding: 1rem;
+    z-index: 99;
     transition: 0.2s ease;
     h1 {
       filter: drop-shadow(-3px 0px 2px #5a5a5a);
+    }
+  }
+  .scrolled1 {
+    color: $white;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    h1 {
+      filter: drop-shadow(0px 0px 0px);
     }
   }
   .particles {
@@ -86,35 +85,31 @@
   .textAbout {
     padding: 1rem 0;
   }
-  .sectionForm {
-    @include height(75vh, 75vh);
-    position: relative;
-    z-index: 99;
-    transition: 0.2s ease;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  }
   .sectionFormNo {
     @include height(75vh, 75vh);
     position: relative;
+    z-index: 99;
     background-color: $white;
     transition: 0.2s ease;
   }
+  .scrolled2 {
+    color: $white;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  }
 }
 
-.sectionAbout {
-  @include height(75vh, 75vh);
-  position: relative;
-  padding: 4.5rem 1rem;
-  color: $white;
-  z-index: 98;
-  transition: 0.2s ease;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-}
 .sectionAboutNo {
   @include height(75vh, 75vh);
   position: relative;
   background-color: $white;
   padding: 5.5rem 1rem;
+  z-index: 98;
   color: $primary-color;
   transition: 0.2s ease;
+}
+.scrolled {
+  color: $white;
+  background-color: transparent;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
