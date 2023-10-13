@@ -1,16 +1,20 @@
 import React from "react";
+import { BsExclamationCircle } from "@react-icons/all-files/bs/BsExclamationCircle";
+import { RiContactsLine } from "@react-icons/all-files/ri/RiContactsLine";
 import styles from "./SidebarMenu.module.scss";
 
-const SidebarMenu = ({ isOpen, toggleMenu }) => {
+const SidebarMenu = ({ isOpen, scrollToFormSection }) => {
   return (
-    <div className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}>
-      <ul className={styles.menu}>
-        <li>Nosotros</li>
-        <li>Contactanos</li>
-      </ul>
-      <button className={styles.toggleButton} onClick={toggleMenu}>
-        Toggle Menu
-      </button>
+    <div
+      className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}
+    >
+      <section className={styles.infoSection}>
+        <button className={styles.toggleButton}>IQNet</button>
+        <ul className={styles.menu}>
+          <li onClick={() => scrollToFormSection("sectionAbout")}><BsExclamationCircle/>Nosotros</li>
+          <li onClick={() => scrollToFormSection("sectionForm")}><RiContactsLine/>Contactános</li>
+        </ul>
+      </section>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Particle from "../../components/particles/Particles";
 import Form from "../../components/form/Form";
 import SidebarMenu from "../../components/sideBarMenu/SideBarMenu";
@@ -8,36 +8,56 @@ import styles from "./LandingPage.module.scss";
 function LandingPage() {
   const [section, setSection] = useState(1);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const aboutRef = useRef<HTMLDivElement | null>(null);
+  const navbarRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (isMenuOpen && !event.target.closest(".sidebar")) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
   };
 
   const handleChangeSection = (value: number) => {
     setSection(value);
   };
 
-  const scrollToFormSection = () => {
-    const formSection = document.getElementById("sectionForm");
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: "smooth" });
+  const scrollToFormSection = (value: string) => {
+    const section = document.getElementById(value);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <main className={styles.mainLanding}>
       <Particle />
-      <SidebarMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <SidebarMenu
+        isOpen={isMenuOpen}
+        scrollToFormSection={scrollToFormSection}
+      />
       <section
         className={
           section === 1 ? styles.sectionLanding : styles.sectionLandingNo
         }
         onMouseEnter={() => handleChangeSection(1)}
+        id="sectionLanding"
       >
         <div
-          className={`${styles.toggleButtonContainer} ${
-            section !== 1 && styles.selected
-          }`}
+          className={`${styles.toggleButtonContainer} ${styles.fixed}`}
+          ref={navbarRef}
         >
           <button onClick={toggleMenu}>
             <IoMenu />
@@ -50,13 +70,16 @@ function LandingPage() {
           quae.
         </p>
         <div className={styles.buttonContainer}>
-          <button onClick={scrollToFormSection}>CONTACTÁNOS</button>
+          <button onClick={() => scrollToFormSection("sectionForm")}>
+            CONTACTÁNOS
+          </button>
         </div>
       </section>
       <section
         className={section === 2 ? styles.sectionAbout : styles.sectionAboutNo}
         onMouseEnter={() => handleChangeSection(2)}
         id="sectionAbout"
+        ref={aboutRef}
       >
         <div>
           <h1 className={styles.titleAbout}>¿Quienes Somos?</h1>
