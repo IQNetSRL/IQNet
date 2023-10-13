@@ -9,74 +9,76 @@ function Particle() {
   }, []);
 
   return (
-    <Particles
-      init={particlesInit}
-      options={{
-        background: {
-          color: {
-            value: "#E07524",
+    <section>
+      <Particles
+        init={particlesInit}
+        options={{
+          background: {
+            color: {
+              value: "#E07524",
+            },
           },
-        },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onClick: {
+          fpsLimit: 120,
+          interactivity: {
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+              resize: true,
+            },
+            modes: {
+              push: {
+                quantity: 4,
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: "#E0C324",
+            },
+            links: {
+              color: "#E0C324",
+              distance: 150,
               enable: true,
-              mode: "push",
+              opacity: 0.5,
+              width: 1,
             },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: "#E0C324",
-          },
-          links: {
-            color: "#E0C324",
-            distance: 150,
-            enable: true,
-            opacity: 0.5,
-            width: 1,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 0.5,
-            straight: false,
-          },
-          number: {
-            density: {
+            move: {
+              direction: "none",
               enable: true,
-              area: 600,
+              outModes: {
+                default: "bounce",
+              },
+              random: false,
+              speed: 0.5,
+              straight: false,
             },
-            value: 80,
+            number: {
+              density: {
+                enable: true,
+                area: 600,
+              },
+              value: 80,
+            },
+            opacity: {
+              value: 0.5,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 5 },
+            },
           },
-          opacity: {
-            value: 0.5,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 1, max: 5 },
-          },
-        },
-        detectRetina: true,
-      }}
-    />
+          detectRetina: true,
+        }}
+      />
+    </section>
   );
 }
 

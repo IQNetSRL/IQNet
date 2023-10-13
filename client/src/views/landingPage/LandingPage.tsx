@@ -91,42 +91,46 @@ function LandingPage() {
           <IoMenu />
         </button>
       </div>
-      <section
-        className={`${styles.sectionLandingNo} ${styles.scrolled1}`}
-        id="sectionLanding"
-        ref={landingRef}
-      >
-        <h1 className={styles.title}>IQNet</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed
-          voluptatum dolorem, ab facere temporibus qui veniam non repellendus
-          quae.
-        </p>
-        <div className={styles.buttonContainer}>
-          <button onClick={() => scrollToFormSection("sectionForm")}>
-            CONTACTÁNOS
-          </button>
-        </div>
-      </section>
-      <section
-        className={styles.sectionAboutNo}
-        id="sectionAbout"
-        ref={aboutRef}
-      >
-        <div>
-          <h1 className={styles.titleAbout}>¿Quienes Somos?</h1>
-          <p className={styles.textAbout}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eius
-            libero explicabo voluptatem, quasi in? Quis dolore odio ipsa ipsum
-            et necessitatibus error dolores qui, cupiditate quae expedita quo
-            dolor quasi eveniet veniam, facilis totam itaque architecto
-            explicabo, consequuntur vitae?
+      <div className={styles.side}></div>
+      <section className={styles.mainSection}>
+        <section
+          className={`${styles.sectionLanding} ${styles.scrolled1}`}
+          id="sectionLanding"
+          ref={landingRef}
+        >
+          <h1 className={styles.title}>IQNet</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+            sed voluptatum dolorem, ab facere temporibus qui veniam non
+            repellendus quae.
           </p>
-        </div>
+          <div className={styles.buttonContainer}>
+            <button onClick={() => scrollToFormSection("sectionForm")}>
+              CONTACTÁNOS
+            </button>
+          </div>
+        </section>
+        <section
+          className={styles.sectionAbout}
+          id="sectionAbout"
+          ref={aboutRef}
+        >
+          <div>
+            <h1 className={styles.titleAbout}>¿Quienes Somos?</h1>
+            <p className={styles.textAbout}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eius
+              libero explicabo voluptatem, quasi in? Quis dolore odio ipsa ipsum
+              et necessitatibus error dolores qui, cupiditate quae expedita quo
+              dolor quasi eveniet veniam, facilis totam itaque architecto
+              explicabo, consequuntur vitae?
+            </p>
+          </div>
+        </section>
+        <section className={styles.sectionForm} id="sectionForm" ref={formRef}>
+          <Form />
+        </section>
       </section>
-      <section className={styles.sectionFormNo} id="sectionForm" ref={formRef}>
-        <Form />
-      </section>
+      <div className={styles.side}></div>
     </main>
   );
 }
