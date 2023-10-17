@@ -2,7 +2,7 @@
 @import "../../styles/mixins.scss";
 
 .sectionForm {
-  @include centerFlex(flex, column, flex-start, center, 0.5rem);
+  @include centerFlex(flex, column, space-between, center, 0);
   @include height(54.76vh, 54.76vh);
   @include width(21rem, 21rem);
   position: relative;
@@ -10,24 +10,29 @@
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   div {
+    @include centerFlex(flex, column, space-between, center, 0.23rem);
     @include width(100%, 100%);
-    h2 {
-      @include width(100%, 100%);
-      text-align: center;
-      padding: 1rem;
-    }
+    @include height(100%, 100%);
+    flex: 1;
     form {
+      @include centerFlex(flex, column, space-between, center, 0);
       @include width(100%, 100%);
       color: $white;
+      flex: 1;
+      h2 {
+        @include width(100%, 100%);
+        text-align: center;
+        padding: 1rem;
+      }
       .section1 {
         @include centerFlex(flex, row, center, center, 0.5rem);
         @include width(100%, 100%);
-        padding: 1rem 0.5rem 0.5rem;
+        padding: 0.5rem;
         div {
           @include width(9.65rem, 9.65rem);
           input {
             @include width(100%, 100%);
-            @include height(2.3rem, 2.3rem);
+            @include height(4.7vh, 4.7vh);
             border-radius: 5px;
             border: 1px solid $third-color;
             padding-left: 0.5rem;
@@ -43,7 +48,7 @@
           @include width(9.65rem, 9.65rem);
           input {
             @include width(100%, 100%);
-            @include height(2.3rem, 2.3rem);
+            @include height(4.7vh, 4.7vh);
             border-radius: 5px;
             border: 1px solid $third-color;
             padding-left: 0.5rem;
@@ -58,12 +63,12 @@
       .section3 {
         @include centerFlex(flex, column, center, center, 0.5rem);
         @include width(100%, 100%);
-        padding: 0 0.5rem 1rem;
+        padding: 0 0.5rem 0.5rem;
         div {
           @include width(19.69rem, 19.69rem);
           input {
             @include width(100%, 100%);
-            @include height(2.3rem, 2.3rem);
+            @include height(4.7vh, 4.7vh);
             border-radius: 5px;
             border: 1px solid $third-color;
             padding-left: 0.5rem;
@@ -71,7 +76,7 @@
           }
           textarea {
             @include width(100%, 100%);
-            @include height(9rem, 9rem);
+            @include height(18.6vh, 18.6vh);
             border-radius: 5px;
             border: 1px solid $third-color;
             padding: 0.5rem;
@@ -87,6 +92,45 @@
         font-size: 1.2rem;
         &:hover {
           background-color: rgb(24, 72, 134);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 560px) {
+  .sectionForm {
+    @include width(30rem, 30rem);
+    div {
+      form {
+        .section1 {
+          @include centerFlex(flex, row, center, center, 2rem);
+          div {
+            @include width(12rem, 12rem);
+            input {
+              font-size: 1rem;
+            }
+          }
+        }
+        .section2 {
+          @include centerFlex(flex, row, center, center, 2rem);
+          div {
+            @include width(12rem, 12rem);
+            input {
+              font-size: 1rem;
+            }
+          }
+        }
+        .section3 {
+          div {
+            @include width(26rem, 26rem);
+            input {
+              font-size: 1rem;
+            }
+            textarea {
+              font-size: 1rem;
+            }
+          }
         }
       }
     }

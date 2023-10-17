@@ -49,72 +49,74 @@ function Form() {
   return (
     <section className={styles.sectionForm}>
       <div>
-        <h2>CONTÁCTANOS</h2>
         <form onSubmit={handleSubmit}>
-          <section className={styles.section1}>
-            <div>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="Nombre"
-                value={formData.firstName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="Apellido"
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </div>
-          </section>
-          <section className={styles.section2}>
-            <div>
-              <input
-                type="text"
-                id="city"
-                name="city"
-                placeholder="Ciudad"
-                value={formData.city}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <input
-                type="number"
-                id="phoneNumber"
-                name="phoneNumber"
-                placeholder="Número de Teléfono"
-                value={formData.phoneNumber}
-                onChange={handleInputChange}
-              />
-            </div>
-          </section>
-          <section className={styles.section3}>
-            <div>
-              <input
-                type="text"
-                id="emailAddress"
-                name="emailAddress"
-                placeholder="Correo electrónico"
-                value={formData.emailAddress}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <textarea
-                id="query"
-                name="query"
-                placeholder="Consulta"
-                value={formData.query}
-                onChange={handleInputChange}
-              />
-            </div>
+          <h2>CONTÁCTANOS</h2>
+          <section>
+            <section className={styles.section1}>
+              <div>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Nombre"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Apellido"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </section>
+            <section className={styles.section2}>
+              <div>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="Ciudad"
+                  value={formData.city}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <input
+                  type="number"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  placeholder="Número de Teléfono"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </section>
+            <section className={styles.section3}>
+              <div>
+                <input
+                  type="text"
+                  id="emailAddress"
+                  name="emailAddress"
+                  placeholder="Correo electrónico"
+                  value={formData.emailAddress}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <textarea
+                  id="query"
+                  name="query"
+                  placeholder="Consulta"
+                  value={formData.query}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </section>
           </section>
           <button type="submit">Enviar</button>
         </form>
