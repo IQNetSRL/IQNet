@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { storeUser } from "../../redux/actions.js";
+import Swal from "sweetalert2";
 import styles from "./Form.module.scss";
 
 function Form() {
@@ -36,14 +37,36 @@ function Form() {
     return null;
   };
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isFormValid()) {
-      alert(
-        "Por favor, complete todos los campos antes de enviar el formulario."
-      );
+      Swal.fire({
+        icon: "error",
+        text: "Por favor, complete todos los campos antes de enviar el formulario.",
+        showCancelButton: false,
+        confirmButtonText: "Aceptar",
+        color: "#5a5a5a",
+        confirmButtonColor: "#E05424",
+      });
       return;
+    } else {
+      Toast.fire({
+        icon: "success",
+        title: "¡Información recivida!",
+      });
     }
 
     const { firstName, lastName, city, phoneNumber, emailAddress, query } =
