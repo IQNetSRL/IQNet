@@ -19,8 +19,32 @@ function Form() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const isFormValid = () => {
+    return (
+      formData.firstName.trim() !== "" &&
+      formData.lastName.trim() !== "" &&
+      formData.phoneNumber.trim() !== "" &&
+      formData.emailAddress.trim() !== "" &&
+      formData.query.trim() !== ""
+    );
+  };
+
+  const renderAsterisk = (fieldName) => {
+    if (formData[fieldName].trim() === "") {
+      return <span>*</span>;
+    }
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isFormValid()) {
+      alert(
+        "Por favor, complete todos los campos antes de enviar el formulario."
+      );
+      return;
+    }
 
     const { firstName, lastName, city, phoneNumber, emailAddress, query } =
       formData;
@@ -54,6 +78,7 @@ function Form() {
           <section>
             <section className={styles.section1}>
               <div>
+                <label htmlFor="firstName">{renderAsterisk("firstName")}</label>
                 <input
                   type="text"
                   id="firstName"
@@ -64,6 +89,7 @@ function Form() {
                 />
               </div>
               <div className={styles.formGroup}>
+                <label htmlFor="lastName">{renderAsterisk("lastName")}</label>
                 <input
                   type="text"
                   id="lastName"
@@ -76,6 +102,7 @@ function Form() {
             </section>
             <section className={styles.section2}>
               <div>
+                <label htmlFor="city">{renderAsterisk("city")}</label>
                 <input
                   type="text"
                   id="city"
@@ -86,6 +113,9 @@ function Form() {
                 />
               </div>
               <div className={styles.formGroup}>
+                <label htmlFor="phoneNumber">
+                  {renderAsterisk("phoneNumber")}
+                </label>
                 <input
                   type="number"
                   id="phoneNumber"
@@ -98,6 +128,9 @@ function Form() {
             </section>
             <section className={styles.section3}>
               <div>
+                <label htmlFor="emailAddress">
+                  {renderAsterisk("emailAddress")}
+                </label>
                 <input
                   type="text"
                   id="emailAddress"
@@ -108,6 +141,7 @@ function Form() {
                 />
               </div>
               <div>
+                <label htmlFor="query">{renderAsterisk("query")}</label>
                 <textarea
                   id="query"
                   name="query"

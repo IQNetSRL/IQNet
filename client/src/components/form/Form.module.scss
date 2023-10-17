@@ -29,7 +29,13 @@
         @include width(100%, 100%);
         padding: 0.5rem;
         div {
+          @include centerFlex(flex, row, center, center, 0);
           @include width(9.65rem, 9.65rem);
+          position: relative;
+          label {
+            position: absolute;
+            visibility: hidden;
+          }
           input {
             @include width(100%, 100%);
             @include height(4.7vh, 4.7vh);
@@ -45,7 +51,13 @@
         @include width(100%, 100%);
         padding: 0 0.5rem 0.5rem;
         div {
+          @include centerFlex(flex, row, center, center, 0);
           @include width(9.65rem, 9.65rem);
+          position: relative;
+          label {
+            position: absolute;
+            visibility: hidden;
+          }
           input {
             @include width(100%, 100%);
             @include height(4.7vh, 4.7vh);
@@ -65,7 +77,13 @@
         @include width(100%, 100%);
         padding: 0 0.5rem 0.5rem;
         div {
+          @include centerFlex(flex, row, center, center, 0.5rem);
           @include width(19.69rem, 19.69rem);
+          position: relative;
+          label {
+            position: absolute;
+            visibility: hidden;
+          }
           input {
             @include width(100%, 100%);
             @include height(4.7vh, 4.7vh);
@@ -106,6 +124,12 @@
         .section1 {
           @include centerFlex(flex, row, center, center, 2rem);
           div {
+            label {
+              left: -1.1rem;
+              top: 0.77rem;
+              color: red;
+              visibility: visible;
+            }
             @include width(12rem, 12rem);
             input {
               font-size: 1rem;
@@ -115,6 +139,12 @@
         .section2 {
           @include centerFlex(flex, row, center, center, 2rem);
           div {
+            label {
+              left: -1.1rem;
+              top: 0.77rem;
+              color: red;
+              visibility: visible;
+            }
             @include width(12rem, 12rem);
             input {
               font-size: 1rem;
@@ -123,6 +153,12 @@
         }
         .section3 {
           div {
+            label {
+              left: -1.1rem;
+              top: 0.77rem;
+              color: red;
+              visibility: visible;
+            }
             @include width(26rem, 26rem);
             input {
               font-size: 1rem;
