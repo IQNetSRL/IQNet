@@ -5,7 +5,7 @@ class Users extends Model {
   public name!: string;
   public lastName!: string;
   public city!: string;
-  public phoneNumber!: number;
+  public phoneNumber!: string;
   public emailAddress!: string | null;
   public consult!: string;
   public readonly createdAt!: Date;
@@ -34,17 +34,12 @@ export default (sequelize: Sequelize) => {
         allowNull: false,
       },
       phoneNumber: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       emailAddress: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          isEmail: {
-            msg: "Must be a valid email address",
-          },
-        },
       },
       consult: {
         type: DataTypes.TEXT,

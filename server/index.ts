@@ -6,7 +6,7 @@ dotenv.config();
 
 const port = process.env.PORT;
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   server.listen(port, () => {
     console.log(`Server is listening at port ${port}`);
   });

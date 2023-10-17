@@ -1,4 +1,5 @@
 import {
+  STORE_USER,
   GET_USERS,
   POST_USERS,
   PUT_USERS,
@@ -11,7 +12,7 @@ interface User {
   name: string;
   lastName: string;
   city: string;
-  phoneNumber: number;
+  phoneNumber: string;
   emailAddress: string | null;
   consult: string;
   createdAt: Date;
@@ -37,6 +38,8 @@ interface Action {
 }
 
 function rootReducer(state: State = initialState, action: Action): State {
+  let newUser;
+
   switch (action.type) {
     case GET_USERS:
       return {
@@ -62,7 +65,14 @@ function rootReducer(state: State = initialState, action: Action): State {
       return {
         ...state,
       };
-
+    case STORE_USER:
+      newUser = Array.isArray(action.payload)
+        ? action.payload[0]
+        : action.payload;
+      return {
+        ...state,
+        allUsers: [...state.allUsers, newUser],
+      };
     default:
       return state;
   }

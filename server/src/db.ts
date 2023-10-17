@@ -4,10 +4,14 @@ import Users from "./models/Users";
 
 dotenv.config();
 
+const user = process.env.USER;
+const password = process.env.PASSWORD;
+const database = process.env.DB;
+
 const sequelize = new Sequelize({
-  database: "IQNet",
-  username: "postgres",
-  password: "francocodea",
+  database: database,
+  username: user,
+  password: password,
   host: "localhost",
   dialect: "postgres",
   logging: false,

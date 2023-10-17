@@ -6,7 +6,7 @@ interface UserAttributes {
   name: string;
   lastName: string;
   city: string;
-  phoneNumber: number;
+  phoneNumber: string;
   emailAddress: string | null;
   consult: string;
   createdAt: Date;
