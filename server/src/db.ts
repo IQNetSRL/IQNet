@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 import Users from "./models/Users";
+import Cities from "./models/Cities";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ const sequelize = new Sequelize({
   native: false,
 });
 
-const modelDefiners = [Users];
+const modelDefiners = [Users, Cities];
 
 modelDefiners.forEach((modelDefiner) => modelDefiner(sequelize));
 
