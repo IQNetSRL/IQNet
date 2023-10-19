@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { storeUser } from "../../redux/actions.js";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { storeUser, getCities } from "../../redux/actions.js";
+import { City } from "../../redux/reducer.js";
 import Swal from "sweetalert2";
 import styles from "./Form.module.scss";
 
 function Form() {
   const dispatch = useDispatch();
+  const allCities = useSelector((state: City) => state.allCities);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,6 +16,12 @@ function Form() {
     emailAddress: "",
     query: "",
   });
+
+  useEffect(() => {
+    getCities();
+  }, []);
+
+  console.log(allCities);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

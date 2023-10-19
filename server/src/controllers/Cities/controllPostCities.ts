@@ -4,17 +4,32 @@ import citiesName from "../../Utils/citiesName.js";
 interface CityAttributes {
   name: string;
 }
+let initialized = false;
 
-const controllPostCities = async (req: any): Promise<CityAttributes[]> => {
-  const Cities = db.sequelize.models.Cities;
-  const createdCities: CityAttributes[] = [];
-  req
-  for (const cityName of citiesName) {
-    const newCity = await Cities.create({ name: cityName });
-    createdCities.push(newCity.toJSON() as CityAttributes);
+const initializeCities = async () => {
+  if (!initialized) {
+    const Cities = db.sequelize.models.Cities;
+    const createdCities: CityAttributes[] = [];
+
+    for (const cityName of citiesName) {
+      const [newCity, created] = await Cities.findOrCreate({
+        where: { name: cityName },
+        defaults: { name: cityName },
+      });
+
+      if (created) {
+        createdCities.push(newCity.toJSON() as CityAttributes);
+      }
+    }
+
+    initialized = true;
   }
+};
 
-  return createdCities;
+const controllPostCities = async (): Promise<CityAttributes[]> => {
+  initializeCities();
+
+  return [];
 };
 
 export default controllPostCities;

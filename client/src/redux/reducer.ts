@@ -5,6 +5,7 @@ import {
   PUT_USERS,
   DELETE_USERS,
   GET_USER_BY_ID,
+  GET_CITIES,
 } from "./actionTypes.js";
 
 interface User {
@@ -20,8 +21,14 @@ interface User {
   deletedAt: Date | null;
 }
 
+export interface City {
+  id: string;
+  name: string;
+}
+
 interface State {
   allUsers: User[];
+  allCities: City[];
   userDeleted: User[];
   userById: User[];
 }
@@ -30,21 +37,26 @@ const initialState: State = {
   allUsers: [],
   userDeleted: [],
   userById: [],
+  allCities: [],
 };
 
 interface Action {
   type: string;
   payload: User[];
 }
-
+console.log(initialState);
 function rootReducer(state: State = initialState, action: Action): State {
   let newUser;
-
   switch (action.type) {
     case GET_USERS:
       return {
         ...state,
         allUsers: action.payload,
+      };
+    case GET_CITIES:
+      return {
+        ...state,
+        allCities: action.payload,
       };
     case POST_USERS:
       return {
