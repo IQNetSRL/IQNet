@@ -31,7 +31,7 @@ function Form() {
 
   const handleBlur = () => {
     setTimeout(() => {
-      setListVisible(false);
+      setListVisible(true);
     }, 200);
   };
 
@@ -182,28 +182,33 @@ function Form() {
             <section className={styles.section2}>
               <div>
                 <label htmlFor="city">{renderAsterisk("city")}</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  placeholder="Ciudad"
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  value={formData.city}
-                  onChange={handleCityInputChange}
-                />
+                <div>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Ciudad"
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    value={formData.city}
+                    onChange={handleCityInputChange}
+                  />
+                  {isListVisible && filteredCities.length > 0 && (
+                    <ul className={styles.cityResults} ref={resultsRef}>
+                      {filteredCities
+                        .slice(0, 5)
+                        .map((city: { id: string; name: string }) => (
+                          <li
+                            key={city.id}
+                            onClick={() => handleSelectCity(city)}
+                          >
+                            {city.name}
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </div>
               </div>
-              {isListVisible && filteredCities.length > 0 && (
-                <ul className={styles.cityResults} ref={resultsRef}>
-                  {filteredCities
-                    .slice(0, 5)
-                    .map((city: { id: string; name: string }) => (
-                      <li key={city.id} onClick={() => handleSelectCity(city)}>
-                        {city.name}
-                      </li>
-                    ))}
-                </ul>
-              )}
               <div className={styles.formGroup}>
                 <label htmlFor="address">{renderAsterisk("address")}</label>
                 <input

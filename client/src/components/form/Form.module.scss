@@ -54,6 +54,28 @@
           @include centerFlex(flex, row, center, center, 0);
           @include width(9.65rem, 9.65rem);
           position: relative;
+          div {
+            position: relative;
+            ul {
+              @include width(100%, 100%);
+              position: absolute;
+              color: $white;
+              background-color: $primary-grey;
+              list-style: none;
+              top: 4.7vh;
+              z-index: 2;
+              border-radius: 0 0 0.5rem 0.5rem;
+              overflow: hidden;
+              li {
+                padding: 0.5rem;
+                cursor: pointer;
+                &:hover {
+                  background-color: $secondary-grey;
+                  color: $secondary-color;
+                }
+              }
+            }
+          }
           label {
             position: absolute;
             visibility: hidden;

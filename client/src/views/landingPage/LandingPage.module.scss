@@ -86,7 +86,7 @@
         background-color: $white;
         div {
           h2 {
-            background-color: #5a5a5a;
+            background-color: $primary-grey;
           }
         }
       }
@@ -96,7 +96,7 @@
     @include centerFlex(flex, row, flex-start, center, 0);
     @include width(100%, 100%);
     position: fixed;
-    background-color: #5a5a5a;
+    background-color: $primary-grey;
     top: 0;
     left: 0;
     padding: 0.2rem 0.45rem;
