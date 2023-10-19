@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { storeUser, getCities } from "../../redux/actions.js";
-import { City } from "../../redux/reducer.js";
 import Swal from "sweetalert2";
 import styles from "./Form.module.scss";
 
 function Form() {
   const dispatch = useDispatch();
-  const allCities = useSelector((state: City) => state.allCities);
+  const allCities = useSelector((state) => state.someReducer.allCities);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     city: "",
     phoneNumber: "",
     emailAddress: "",
+    address: "",
     query: "",
   });
 
   useEffect(() => {
-    getCities();
+    dispatch(getCities());
   }, []);
-
-  console.log(allCities);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -77,7 +75,7 @@ function Form() {
       });
     }
 
-    const { firstName, lastName, city, phoneNumber, emailAddress, query } =
+    const { firstName, lastName, city, phoneNumber, emailAddress, address, query } =
       formData;
 
     const user = {
@@ -86,6 +84,7 @@ function Form() {
       city,
       phoneNumber,
       emailAddress,
+      address,
       consult: query,
     };
 
@@ -97,6 +96,7 @@ function Form() {
       city: "",
       phoneNumber: "",
       emailAddress: "",
+      address: "",
       query: "",
     });
   };
@@ -144,21 +144,19 @@ function Form() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="phoneNumber">
-                  {renderAsterisk("phoneNumber")}
-                </label>
+                <label htmlFor="address">{renderAsterisk("address")}</label>
                 <input
-                  type="number"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  placeholder="Número de Teléfono"
-                  value={formData.phoneNumber}
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Direccion"
+                  value={formData.address}
                   onChange={handleInputChange}
                 />
               </div>
             </section>
-            <section className={styles.section3}>
-              <div>
+            <section className={styles.section2}>
+            <div>
                 <label htmlFor="emailAddress">
                   {renderAsterisk("emailAddress")}
                 </label>
@@ -171,6 +169,19 @@ function Form() {
                   onChange={handleInputChange}
                 />
               </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="phoneNumber">{renderAsterisk("phoneNumber")}</label>
+                <input
+                  type="number"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  placeholder="Número de Teléfono"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </section>
+            <section className={styles.section3}>
               <div>
                 <label htmlFor="query">{renderAsterisk("query")}</label>
                 <textarea
