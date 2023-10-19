@@ -7,6 +7,7 @@ class Users extends Model {
   public city!: string;
   public phoneNumber!: string;
   public emailAddress!: string | null;
+  public address!: string | null;
   public consult!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -38,6 +39,10 @@ export default (sequelize: Sequelize) => {
         allowNull: false,
       },
       emailAddress: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      address: {
         type: DataTypes.STRING,
         allowNull: true,
       },

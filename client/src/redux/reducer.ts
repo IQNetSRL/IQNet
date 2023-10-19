@@ -7,6 +7,7 @@ interface User {
   city: string;
   phoneNumber: string;
   emailAddress: string | null;
+  address: string | null;
   consult: string;
   createdAt: Date;
   updatedAt: Date;

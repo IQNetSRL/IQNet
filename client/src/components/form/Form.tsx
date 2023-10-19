@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { storeUser, getCities } from "../../redux/actions.js";
 import Swal from "sweetalert2";
@@ -7,6 +7,9 @@ import styles from "./Form.module.scss";
 function Form() {
   const dispatch = useDispatch();
   const allCities = useSelector((state) => state.someReducer.allCities);
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [isListVisible, setListVisible] = useState(false);
+  const resultsRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,11 +22,23 @@ function Form() {
 
   useEffect(() => {
     dispatch(getCities());
-  }, []);
+  }, [dispatch]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setListVisible(false);
+    }, 200);
+  };
+
+  const handleFocus = () => {
+    if (allCities.length > 0) {
+      setListVisible(true);
+    }
   };
 
   const isFormValid = () => {
@@ -32,6 +47,7 @@ function Form() {
       formData.lastName.trim() !== "" &&
       formData.phoneNumber.trim() !== "" &&
       formData.emailAddress.trim() !== "" &&
+      formData.address.trim() !== "" &&
       formData.query.trim() !== ""
     );
   };
@@ -55,6 +71,31 @@ function Form() {
     },
   });
 
+  const handleCityInputChange = (event) => {
+    const cityName = event.target.value;
+    const filteredCityList = allCities.filter((city) =>
+      city.name.toLowerCase().includes(cityName.toLowerCase())
+    );
+
+    setFormData({
+      ...formData,
+      city: cityName,
+    });
+
+    setFilteredCities(filteredCityList);
+    setListVisible(true);
+  };
+
+  const handleSelectCity = (selectedCity) => {
+    setFormData({
+      ...formData,
+      city: selectedCity.name,
+    });
+
+    setFilteredCities([]);
+    setListVisible(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -75,8 +116,15 @@ function Form() {
       });
     }
 
-    const { firstName, lastName, city, phoneNumber, emailAddress, address, query } =
-      formData;
+    const {
+      firstName,
+      lastName,
+      city,
+      phoneNumber,
+      emailAddress,
+      address,
+      query,
+    } = formData;
 
     const user = {
       name: firstName,
@@ -139,10 +187,23 @@ function Form() {
                   id="city"
                   name="city"
                   placeholder="Ciudad"
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                   value={formData.city}
-                  onChange={handleInputChange}
+                  onChange={handleCityInputChange}
                 />
               </div>
+              {isListVisible && filteredCities.length > 0 && (
+                <ul className={styles.cityResults} ref={resultsRef}>
+                  {filteredCities
+                    .slice(0, 5)
+                    .map((city: { id: string; name: string }) => (
+                      <li key={city.id} onClick={() => handleSelectCity(city)}>
+                        {city.name}
+                      </li>
+                    ))}
+                </ul>
+              )}
               <div className={styles.formGroup}>
                 <label htmlFor="address">{renderAsterisk("address")}</label>
                 <input
@@ -156,7 +217,7 @@ function Form() {
               </div>
             </section>
             <section className={styles.section2}>
-            <div>
+              <div>
                 <label htmlFor="emailAddress">
                   {renderAsterisk("emailAddress")}
                 </label>
@@ -170,13 +231,15 @@ function Form() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="phoneNumber">{renderAsterisk("phoneNumber")}</label>
+                <label htmlFor="phoneNumber">
+                  {renderAsterisk("phoneNumber")}
+                </label>
                 <input
                   type="number"
                   id="phoneNumber"
                   name="phoneNumber"
                   placeholder="Número de Teléfono"
-                  value={formData.address}
+                  value={formData.phoneNumber}
                   onChange={handleInputChange}
                 />
               </div>

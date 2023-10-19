@@ -8,6 +8,7 @@ interface UserAttributes {
   city: string;
   phoneNumber: string;
   emailAddress: string | null;
+  address: string | null;
   consult: string;
   createdAt: Date;
   updatedAt: Date;
@@ -15,7 +16,7 @@ interface UserAttributes {
 }
 
 const controllPostUser = async (req: Request): Promise<UserAttributes> => {
-  const { name, lastName, phoneNumber, city, emailAddress, consult } = req.body;
+  const { name, lastName, phoneNumber, city, emailAddress, address, consult } = req.body;
   const Users = db.sequelize.models.Users;
 
   const [newUser] = await Users.findOrCreate({
@@ -24,6 +25,7 @@ const controllPostUser = async (req: Request): Promise<UserAttributes> => {
       lastName,
       emailAddress,
       phoneNumber,
+      address,
       city,
       consult,
     },
