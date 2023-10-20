@@ -46,8 +46,6 @@ function Form() {
       formData.firstName.trim() !== "" &&
       formData.lastName.trim() !== "" &&
       formData.phoneNumber.trim() !== "" &&
-      formData.emailAddress.trim() !== "" &&
-      formData.address.trim() !== "" &&
       formData.query.trim() !== ""
     );
   };
@@ -102,7 +100,7 @@ function Form() {
     if (!isFormValid()) {
       Swal.fire({
         icon: "error",
-        text: "Por favor, complete todos los campos antes de enviar el formulario.",
+        text: "Por favor, complete todos los campos (*) antes de enviar el formulario.",
         showCancelButton: false,
         confirmButtonText: "Aceptar",
         color: "#5a5a5a",
@@ -210,7 +208,6 @@ function Form() {
                 </div>
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="address">{renderAsterisk("address")}</label>
                 <input
                   type="text"
                   id="address"
@@ -218,14 +215,12 @@ function Form() {
                   placeholder="Direccion"
                   value={formData.address}
                   onChange={handleInputChange}
+                  autoComplete="address"
                 />
               </div>
             </section>
             <section className={styles.section2}>
               <div>
-                <label htmlFor="emailAddress">
-                  {renderAsterisk("emailAddress")}
-                </label>
                 <input
                   type="text"
                   id="emailAddress"
