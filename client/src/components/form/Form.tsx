@@ -238,7 +238,7 @@ function Form() {
                   type="number"
                   id="phoneNumber"
                   name="phoneNumber"
-                  placeholder="Número de Teléfono"
+                  placeholder="Teléfono"
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                 />
