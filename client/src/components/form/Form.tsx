@@ -31,7 +31,7 @@ function Form() {
 
   const handleBlur = () => {
     setTimeout(() => {
-      setListVisible(true);
+      setListVisible(false);
     }, 200);
   };
 
