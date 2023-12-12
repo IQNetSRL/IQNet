@@ -3,7 +3,7 @@
     "target": "ES2021",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ES6",
+    "module": "Node16",
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "E:/IQNet/IQNet/client",
@@ -21,6 +21,6 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "react"
   },
-  "include": ["./**/*.ts"],
+  "include": ["./**/*.ts", "src/redux/store.js"],
   "exclude": ["node_modules"]
 }

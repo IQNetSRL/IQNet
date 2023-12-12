@@ -13,6 +13,7 @@
     "@formkit/auto-animate": "^0.8.0",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.7",
+    "@types/redux-devtools-extension": "^2.13.2",
     "axios": "^1.4.0",
     "i18next": "^23.5.1",
     "node-sass": "^9.0.0",
@@ -25,6 +26,7 @@
     "react-router-dom": "^6.11.1",
     "react-tsparticles": "^2.12.2",
     "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "sweetalert2": "^11.7.32",
     "tsparticles-slim": "^2.12.0"
@@ -35,6 +37,7 @@
     "@types/react": "^18.2.25",
     "@types/react-autosuggest": "^10.1.8",
     "@types/react-dom": "^18.2.10",
+    "@types/redux-thunk": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
