@@ -3,12 +3,12 @@
     "target": "ES2021",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "Node16",
+    "module": "ESNext",
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "E:/IQNet/IQNet/client",
     /* Bundler mode */
-    "moduleResolution": "Node16",
+    "moduleResolution": "node",
     "allowJs": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -19,8 +19,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "react"
+    "jsx": "react",
   },
-  "include": ["./**/*.ts", "src/redux/store.js"],
+  "include": ["./**/*.ts"],
   "exclude": ["node_modules"]
 }
