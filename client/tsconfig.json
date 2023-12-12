@@ -5,7 +5,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "outDir": "./src",
+    "outDir": "./dist",
     "rootDir": "E:/IQNet/IQNet/client",
     /* Bundler mode */
     "moduleResolution": "node",
@@ -21,6 +21,12 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "react",
   },
-  "include": ["./src/**/*.ts"],
+  "include": [
+    "./src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ],
   "exclude": ["node_modules"]
 }
