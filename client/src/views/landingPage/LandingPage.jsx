@@ -7,10 +7,10 @@ import styles from "./LandingPage.module.scss";
 
 function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-  const navbarRef = useRef<HTMLDivElement | null>(null);
-  const formRef = useRef<HTMLDivElement | null>(null);
-  const landingRef = useRef<HTMLDivElement | null>(null);
+  const aboutRef = useRef(null);
+  const navbarRef = useRef(null);
+  const formRef = useRef(null);
+  const landingRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -69,7 +69,7 @@ function LandingPage() {
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
   };
 
-  const scrollToFormSection = (value: string) => {
+  const scrollToFormSection = (value) => {
     const section = document.getElementById(value);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });

@@ -193,16 +193,14 @@ function Form() {
                   />
                   {isListVisible && filteredCities.length > 0 && (
                     <ul className={styles.cityResults} ref={resultsRef}>
-                      {filteredCities
-                        .slice(0, 5)
-                        .map((city: { id: string; name: string }) => (
-                          <li
-                            key={city.id}
-                            onClick={() => handleSelectCity(city)}
-                          >
-                            {city.name}
-                          </li>
-                        ))}
+                      {filteredCities.slice(0, 5).map((city) => (
+                        <li
+                          key={city.id}
+                          onClick={() => handleSelectCity(city)}
+                        >
+                          {city.name}
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </div>
