@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Particle from "../../components/particles/Particles";
 import Form from "../../components/form/Form";
-import SidebarMenu from "../../components/sideBarMenu/SideBarMenu";
+import SidebarMenu from "../../components/sideBarMenu/SidebarMenu.jsx";
 import { IoMenu } from "@react-icons/all-files/io5/IoMenu";
 import styles from "./LandingPage.module.scss";
 
