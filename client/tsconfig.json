@@ -6,7 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "E:/IQNet/IQNet/client",
+    "rootDir": "./src",
     /* Bundler mode */
     "moduleResolution": "node",
     "allowJs": true,
@@ -19,14 +19,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": [
-    "./src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts",
-    "src/**/*.js",
-    "src/**/*.jsx"
-  ],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules"]
 }
