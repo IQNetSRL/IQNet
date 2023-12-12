@@ -1,4 +1,4 @@
 {
-  "builds": [{ "src": "./dist/(.*)", "use": "@vercel/node" }],
+  "builds": [{ "src": "./dist/", "use": "@vercel/node" }],
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
