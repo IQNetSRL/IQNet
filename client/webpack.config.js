@@ -43,7 +43,7 @@ export default {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "index.css", 
     }),
     new HtmlWebpackPlugin({
       template: "./index.html",
